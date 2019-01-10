@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    username: infinite_music_admin
+    password: ADMIN
+    url: jdbc:mysql://localhost:3306/infinite_music?useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.jdbc.Driver
