@@ -1,4 +1,4 @@
-package com.just1984.music.persistence.domain;
+package com.just1984.music.persistence.entity;
 
 import com.just1984.music.model.enums.ResourceOriginEnum;
 import com.just1984.music.model.enums.ResourceTypeEnum;

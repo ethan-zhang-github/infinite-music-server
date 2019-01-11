@@ -1,4 +1,4 @@
-package com.just1984.music.persistence.domain;
+package com.just1984.music.persistence.entity;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class Song {
+public class Disc {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,23 +16,14 @@ public class Song {
     @JoinColumn(name = "SINGER_ID")
     private Singer singer;
 
-    @ManyToOne(targetEntity = Disc.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "DISC_ID")
-    private Disc disc;
-
-    @ManyToOne(targetEntity = Topic.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "TOPIC_ID")
-    private Topic topic;
-
     private String name;
 
-    private Long duration;
-
-    private Long popularity;
+    private String desc;
 
     private boolean isHot;
 
     private String keywordIds;
 
     private String resourceIds;
+
 }
