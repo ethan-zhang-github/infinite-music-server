@@ -3,15 +3,21 @@ package com.just1984.music.persistence.entity;
 import com.just1984.music.model.enums.ResourceOriginEnum;
 import com.just1984.music.model.enums.ResourceTypeEnum;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Entity
-public class Resource {
+@EntityListeners(AuditingEntityListener.class)
+public class Resource implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)
@@ -21,4 +27,10 @@ public class Resource {
     private ResourceOriginEnum origin;
 
     private String url;
+
+    @CreatedDate
+    private Date createTime;
+
+    @LastModifiedDate
+    private Date updateTime;
 }

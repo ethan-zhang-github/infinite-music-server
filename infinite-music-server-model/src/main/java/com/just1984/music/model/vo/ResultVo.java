@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 public class ResultVo<T> {
 
-    private final static Integer DEFAULT_CODE_SUCCESS = 200;
+    private final static Integer DEFAULT_CODE_SUCCESS = 20000;
 
-    private final static Integer DEFAULT_CODE_ERROR = 400;
+    private final static Integer DEFAULT_CODE_ERROR = 40000;
 
     private final static String DEFAULT_MSG_SUCCESS = "success";
 

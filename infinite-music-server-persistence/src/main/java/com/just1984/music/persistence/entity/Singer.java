@@ -1,18 +1,21 @@
 package com.just1984.music.persistence.entity;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Entity
-public class Singer {
+@EntityListeners(AuditingEntityListener.class)
+public class Singer implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -30,5 +33,11 @@ public class Singer {
     private String keywordIds;
 
     private String resourceIds;
+
+    @CreatedDate
+    private Date createTime;
+
+    @LastModifiedDate
+    private Date updateTime;
 
 }
