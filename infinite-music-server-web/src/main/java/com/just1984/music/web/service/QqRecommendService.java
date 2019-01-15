@@ -18,9 +18,9 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.Map;
 
-@Service("qQRecommendService")
+@Service("qqRecommendService")
 @Slf4j
-public class QQRecommendService implements RecommendService {
+public class QqRecommendService implements RecommendService {
 
     @Autowired
     private RestTemplate restTemplate;

@@ -13,6 +13,6 @@ public class MusicServiceHolder {
     private Map<String, RecommendService> recommendServiceMap;
 
     public RecommendService getRecommendService(String prefix) {
-        return recommendServiceMap.get(prefix.substring(0, 1).toLowerCase() + prefix.substring(1) + "RecommendService");
+        return recommendServiceMap.get(prefix.toLowerCase() + "RecommendService");
     }
 }

@@ -9,6 +9,6 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 
 music:
-  profile: QQ
+  profile: qq
   qq:
     recommend-list-url: https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg
