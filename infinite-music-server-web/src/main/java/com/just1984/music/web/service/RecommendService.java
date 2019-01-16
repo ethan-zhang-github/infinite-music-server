@@ -7,4 +7,5 @@ import java.util.List;
 public interface RecommendService {
 
     List<RecommendVo> getRecommendList(int size);
+
 }

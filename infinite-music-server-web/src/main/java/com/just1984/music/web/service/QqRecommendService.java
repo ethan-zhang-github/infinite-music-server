@@ -5,6 +5,7 @@ import com.just1984.music.model.constant.QQConstants;
 import com.just1984.music.model.vo.RecommendVo;
 import com.just1984.music.model.vo.qq.QQRecommendVo;
 import com.just1984.music.model.vo.qq.QQResponseVo;
+import com.just1984.music.web.component.concurrency.MusicConcurrency;
 import com.just1984.music.web.component.converter.QQSlider2RecommendVoConverter;
 import com.just1984.music.web.config.property.MusicProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,9 @@ public class QqRecommendService implements RecommendService {
     @Autowired
     private MusicProperties musicProperties;
 
+    @Autowired
+    private MusicConcurrency musicConcurrency;
+
     @Override
     public List<RecommendVo> getRecommendList(int size) {
         Map<String, Object> params = Maps.newHashMap();
@@ -37,6 +41,8 @@ public class QqRecommendService implements RecommendService {
         params.put("needNewCode", 1);
         ResponseEntity<QQResponseVo<QQRecommendVo>> res = restTemplate.exchange(musicProperties.getQq().getRecommendListUrl(),
                 HttpMethod.GET, null, new ParameterizedTypeReference<QQResponseVo<QQRecommendVo>>() {}, params);
-        return QQSlider2RecommendVoConverter.INSTANCE.convert(res.getBody().getData().getSlider());
+        List<RecommendVo> recommendVoList = QQSlider2RecommendVoConverter.INSTANCE.convert(res.getBody().getData().getSlider());
+        musicConcurrency.saveRecommendList(recommendVoList);
+        return recommendVoList;
     }
 }
