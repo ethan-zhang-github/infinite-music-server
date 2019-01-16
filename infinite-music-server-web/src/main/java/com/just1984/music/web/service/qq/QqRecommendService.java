@@ -1,4 +1,4 @@
-package com.just1984.music.web.service;
+package com.just1984.music.web.service.qq;
 
 import com.google.common.collect.Maps;
 import com.just1984.music.model.constant.QQConstants;
@@ -8,6 +8,7 @@ import com.just1984.music.model.vo.qq.QQResponseVo;
 import com.just1984.music.web.component.concurrency.MusicConcurrency;
 import com.just1984.music.web.component.converter.QQSlider2RecommendVoConverter;
 import com.just1984.music.web.config.property.MusicProperties;
+import com.just1984.music.web.service.RecommendService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;

@@ -1,7 +1,7 @@
 package com.just1984.music.web.component.concurrency;
 
 import com.just1984.music.model.vo.RecommendVo;
-import com.just1984.music.web.service.LocalRecommendService;
+import com.just1984.music.web.service.local.LocalRecommendService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;

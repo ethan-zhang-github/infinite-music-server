@@ -8,6 +8,8 @@ import java.util.Arrays;
 public class QQMappingJackson2HttpMessageConverter extends MappingJackson2HttpMessageConverter {
 
     public QQMappingJackson2HttpMessageConverter() {
-        setSupportedMediaTypes(Arrays.asList(MediaType.TEXT_HTML));
+        setSupportedMediaTypes(Arrays.asList(MediaType.TEXT_HTML,
+                MediaType.valueOf("application/x-javascript")));
     }
+
 }

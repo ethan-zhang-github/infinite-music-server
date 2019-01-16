@@ -8,4 +8,6 @@ import lombok.Setter;
 public class QQProperties {
 
     private String recommendListUrl;
+
+    private String discListUrl;
 }

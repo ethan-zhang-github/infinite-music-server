@@ -1,4 +1,4 @@
-package com.just1984.music.web.service;
+package com.just1984.music.web.service.local;
 
 import com.google.common.collect.Lists;
 import com.just1984.music.model.enums.ResourceOriginEnum;
@@ -8,6 +8,7 @@ import com.just1984.music.persistence.entity.Recommend;
 import com.just1984.music.persistence.entity.Resource;
 import com.just1984.music.persistence.repository.RecommendRepository;
 import com.just1984.music.persistence.repository.ResourceRepository;
+import com.just1984.music.web.service.RecommendService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
