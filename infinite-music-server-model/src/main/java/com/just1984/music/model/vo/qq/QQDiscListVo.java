@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class QQDiscVo {
+public class QQDiscListVo {
 
     private List<QQDiscItemVo> list;
 }

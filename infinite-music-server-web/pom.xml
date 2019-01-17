@@ -21,11 +21,6 @@
     <dependencies>
         <dependency>
             <groupId>com.just1984</groupId>
-            <artifactId>infinite-music-server-core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.just1984</groupId>
             <artifactId>infinite-music-server-persistence</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

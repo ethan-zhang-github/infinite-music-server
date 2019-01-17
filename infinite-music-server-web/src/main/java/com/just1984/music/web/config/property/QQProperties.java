@@ -10,4 +10,6 @@ public class QQProperties {
     private String recommendListUrl;
 
     private String discListUrl;
+
+    private String singerListUrl;
 }
