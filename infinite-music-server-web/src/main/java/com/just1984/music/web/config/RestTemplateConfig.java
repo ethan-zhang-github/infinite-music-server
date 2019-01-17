@@ -1,6 +1,8 @@
 package com.just1984.music.web.config;
 
+import com.just1984.music.web.component.converter.JsonpMappingJackson2HttpMessageConverter;
 import com.just1984.music.web.component.converter.QQMappingJackson2HttpMessageConverter;
+import com.just1984.music.web.component.interceptor.MusicClientHttpRequestInterceptor;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.ClientHttpRequestFactory;
@@ -13,10 +15,9 @@ public class RestTemplateConfig {
     @Bean
     public RestTemplate restTemplate(ClientHttpRequestFactory factory){
         RestTemplate restTemplate = new RestTemplate(factory);
-        /**
-         * 添加特殊消息转换器处理QQ音乐返回数据
-         */
         restTemplate.getMessageConverters().add(new QQMappingJackson2HttpMessageConverter());
+        restTemplate.getMessageConverters().add(new JsonpMappingJackson2HttpMessageConverter());
+        //restTemplate.getInterceptors().add(new MusicClientHttpRequestInterceptor());
         return restTemplate;
     }
 

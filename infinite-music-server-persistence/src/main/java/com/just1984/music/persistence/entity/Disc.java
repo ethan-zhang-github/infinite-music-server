@@ -18,13 +18,15 @@ public class Disc implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long originId;
+
     @ManyToOne(targetEntity = Singer.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "SINGER_ID")
     private Singer singer;
 
     private String name;
 
-    private String desc;
+    private String description;
 
     private boolean isHot;
 

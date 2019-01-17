@@ -9,7 +9,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 
 music:
-  profile: qq
+  profile: local
   qq:
     recommend-list-url: https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg
     disc-list-url: https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg

@@ -19,7 +19,7 @@ public enum QQDiscItemVo2DiscVoConverter implements MusicConverter<QQDiscItemVo,
     @Override
     public DiscVo convert(QQDiscItemVo qqDiscItemVo) {
         DiscVo vo = new DiscVo();
-        vo.setId(qqDiscItemVo.getDissid());
+        vo.setId(Long.valueOf(qqDiscItemVo.getDissid()));
         vo.setName(qqDiscItemVo.getDissname());
         vo.setImgUrl(qqDiscItemVo.getImgurl());
         vo.setSinger(QQSingerVo2SingerVoConverter.INSTANCE.convert(qqDiscItemVo.getCreator()));

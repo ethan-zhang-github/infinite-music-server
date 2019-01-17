@@ -9,7 +9,6 @@ import com.just1984.music.persistence.entity.Resource;
 import com.just1984.music.persistence.repository.RecommendRepository;
 import com.just1984.music.persistence.repository.ResourceRepository;
 import com.just1984.music.web.service.RecommendService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,37 +31,29 @@ public class LocalRecommendService implements RecommendService {
     @Override
     public List<RecommendVo> getRecommendList(int size) {
         List<Recommend> recommendList = recommendRepository.getLatestRecommendList(size);
-        List<RecommendVo> recommendVoList = Lists.newArrayList();
-        recommendList.stream().forEach(recommend -> {
-            if (StringUtils.isNotBlank(recommend.getResourceIds())) {
-                RecommendVo recommendVo = new RecommendVo();
-                recommendVo.setId(recommend.getId());
-                Arrays.stream(recommend.getResourceIds().split(",")).forEach(resourceId -> {
-                    Optional<Resource> resource = resourceRepository.findById(Long.valueOf(resourceId));
-                    if (resource.isPresent()) {
-                        if (resource.get().getType() == ResourceTypeEnum.IMAGE) {
-                            recommendVo.setPicUrl(resource.get().getUrl());
-                        }
-                        if (resource.get().getType() == ResourceTypeEnum.WEB) {
-                            recommendVo.setLinkUrl(resource.get().getUrl());
-                        }
+        return recommendList.stream().map(recommend -> {
+            RecommendVo recommendVo = new RecommendVo();
+            recommendVo.setId(recommend.getId());
+            Arrays.stream(recommend.getResourceIds().split(",")).forEach(resourceId -> {
+                Optional<Resource> resource = resourceRepository.findById(Long.valueOf(resourceId));
+                if (resource.isPresent()) {
+                    if (resource.get().getType() == ResourceTypeEnum.IMAGE) {
+                        recommendVo.setPicUrl(resource.get().getUrl());
                     }
-                });
-                recommendVoList.add(recommendVo);
-            }
-        });
-        return recommendVoList;
+                    if (resource.get().getType() == ResourceTypeEnum.WEB) {
+                        recommendVo.setLinkUrl(resource.get().getUrl());
+                    }
+                }
+            });
+            return recommendVo;
+        }).collect(Collectors.toList());
     }
 
     @Transactional
     public void saveRecommendList(List<RecommendVo> recommendVoList) {
         List<RecommendVo> filteredRecommendVoList = recommendVoList.stream().filter(recommendVo -> {
             List<Recommend> recommendList = recommendRepository.findByOriginId(recommendVo.getId());
-            if (CollectionUtils.isEmpty(recommendList)) {
-                return true;
-            } else {
-                return false;
-            }
+            return CollectionUtils.isEmpty(recommendList) ? true : false;
         }).collect(Collectors.toList());
         for (RecommendVo recommendVo : filteredRecommendVoList) {
             List<Resource> resourceList = Lists.newArrayList();

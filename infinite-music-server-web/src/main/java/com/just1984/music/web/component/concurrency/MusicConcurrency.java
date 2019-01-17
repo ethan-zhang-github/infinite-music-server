@@ -1,6 +1,8 @@
 package com.just1984.music.web.component.concurrency;
 
+import com.just1984.music.model.vo.DiscVo;
 import com.just1984.music.model.vo.RecommendVo;
+import com.just1984.music.web.service.local.LocalDiscService;
 import com.just1984.music.web.service.local.LocalRecommendService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,16 @@ public class MusicConcurrency {
     @Autowired
     private LocalRecommendService localRecommendService;
 
+    @Autowired
+    private LocalDiscService localDiscService;
+
     @Async
     public void saveRecommendList(List<RecommendVo> recommendVoList) {
         localRecommendService.saveRecommendList(recommendVoList);
+    }
+
+    @Async
+    public void saveDiscList(List<DiscVo> discVoList) {
+        localDiscService.saveDiscList(discVoList);
     }
 }

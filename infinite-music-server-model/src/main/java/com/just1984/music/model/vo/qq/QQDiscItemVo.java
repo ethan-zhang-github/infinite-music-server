@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class QQDiscItemVo {
 
-    private Long dissid;
+    private String dissid;
 
     private String dissname;
 

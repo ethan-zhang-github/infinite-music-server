@@ -15,6 +15,7 @@ public class QQConstants {
         commonParams.put("inCharset", "utf-8");
         commonParams.put("outCharset", "utf-8");
         commonParams.put("notice", 0);
+        commonParams.put("format", "jsonp");
     }
 
 }
