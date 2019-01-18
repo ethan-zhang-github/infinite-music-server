@@ -12,4 +12,8 @@ public class QQProperties {
     private String discListUrl;
 
     private String singerListUrl;
+
+    private String singerAvatarFormatter;
+
+    private String singerDetailUrl;
 }

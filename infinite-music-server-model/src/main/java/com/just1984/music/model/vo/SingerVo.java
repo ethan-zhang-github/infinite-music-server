@@ -7,9 +7,13 @@ public class SingerVo {
 
     private Long id;
 
+    private String mid;
+
     private String index;
 
     private String name;
 
     private String otherName;
+
+    private String avatar;
 }

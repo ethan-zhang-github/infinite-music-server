@@ -9,6 +9,8 @@ public class QQSingerItemVo {
 
     private String Fsinger_id;
 
+    private String Fsinger_mid;
+
     private String Findex;
 
     private String Fsinger_name;

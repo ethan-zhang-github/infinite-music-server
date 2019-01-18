@@ -21,6 +21,7 @@ public enum Singer2SingerVoConverter implements MusicConverter<Singer, SingerVo>
     public SingerVo convert(Singer singer) {
         SingerVo vo = new SingerVo();
         BeanUtils.copyProperties(singer, vo);
+        vo.setIndex(singer.getAlphabet());
         return vo;
     }
 }

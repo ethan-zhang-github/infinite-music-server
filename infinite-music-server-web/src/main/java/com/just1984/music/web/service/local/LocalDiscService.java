@@ -11,10 +11,10 @@ import com.just1984.music.persistence.repository.ResourceRepository;
 import com.just1984.music.persistence.repository.SingerRepository;
 import com.just1984.music.web.component.converter.Singer2SingerVoConverter;
 import com.just1984.music.web.service.DiscService;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -50,11 +50,10 @@ public class LocalDiscService implements DiscService {
 
     @Transactional
     public void saveDiscList(List<DiscVo> discVoList) {
-        List<DiscVo> filteredDiscVoList = discVoList.stream().filter(discVo -> {
+        List<Disc> discListToSave = discVoList.stream().filter(discVo -> {
             List<Disc> discList = discRepository.findByOriginId(discVo.getId());
             return CollectionUtils.isEmpty(discList) ? true : false;
-        }).collect(Collectors.toList());
-        for (DiscVo discVo : filteredDiscVoList) {
+        }).map(discVo -> {
             Resource resource = new Resource(ResourceTypeEnum.IMAGE, ResourceOriginEnum.QQ, discVo.getImgUrl());
             resourceRepository.save(resource);
             List<Singer> singerList = singerRepository.findByName(discVo.getSinger().getName());
@@ -71,7 +70,8 @@ public class LocalDiscService implements DiscService {
             disc.setName(discVo.getName());
             disc.setResourceIds(resource.getId().toString());
             disc.setSinger(singer);
-            discRepository.save(disc);
-        }
+            return disc;
+        }).collect(Collectors.toList());
+        discRepository.saveAll(discListToSave);
     }
 }

@@ -9,10 +9,10 @@ import com.just1984.music.persistence.entity.Resource;
 import com.just1984.music.persistence.repository.RecommendRepository;
 import com.just1984.music.persistence.repository.ResourceRepository;
 import com.just1984.music.web.service.RecommendService;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -51,11 +51,10 @@ public class LocalRecommendService implements RecommendService {
 
     @Transactional
     public void saveRecommendList(List<RecommendVo> recommendVoList) {
-        List<RecommendVo> filteredRecommendVoList = recommendVoList.stream().filter(recommendVo -> {
+        List<Recommend> recommendListToSave = recommendVoList.stream().filter(recommendVo -> {
             List<Recommend> recommendList = recommendRepository.findByOriginId(recommendVo.getId());
             return CollectionUtils.isEmpty(recommendList) ? true : false;
-        }).collect(Collectors.toList());
-        for (RecommendVo recommendVo : filteredRecommendVoList) {
+        }).map(recommendVo -> {
             List<Resource> resourceList = Lists.newArrayList();
             resourceList.add(new Resource(ResourceTypeEnum.IMAGE,
                     ResourceOriginEnum.QQ, recommendVo.getPicUrl()));
@@ -67,7 +66,8 @@ public class LocalRecommendService implements RecommendService {
             recommend.setResourceIds(resourceList.stream()
                     .map(resource -> resource.getId().toString())
                     .collect(Collectors.joining(",")));
-            recommendRepository.save(recommend);
-        }
+            return recommend;
+        }).collect(Collectors.toList());
+        recommendRepository.saveAll(recommendListToSave);
     }
 }

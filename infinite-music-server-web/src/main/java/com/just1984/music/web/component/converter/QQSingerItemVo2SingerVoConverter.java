@@ -20,6 +20,7 @@ public enum QQSingerItemVo2SingerVoConverter implements MusicConverter<QQSingerI
     public SingerVo convert(QQSingerItemVo qqSingerItemVo) {
         SingerVo vo = new SingerVo();
         vo.setId(Long.valueOf(qqSingerItemVo.getFsinger_id()));
+        vo.setMid(qqSingerItemVo.getFsinger_mid());
         vo.setName(qqSingerItemVo.getFsinger_name());
         vo.setOtherName(qqSingerItemVo.getFsinger_name());
         vo.setIndex(qqSingerItemVo.getFindex());

@@ -2,8 +2,10 @@ package com.just1984.music.web.component.concurrency;
 
 import com.just1984.music.model.vo.DiscVo;
 import com.just1984.music.model.vo.RecommendVo;
+import com.just1984.music.model.vo.SingerVo;
 import com.just1984.music.web.service.local.LocalDiscService;
 import com.just1984.music.web.service.local.LocalRecommendService;
+import com.just1984.music.web.service.local.LocalSingerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -21,6 +23,9 @@ public class MusicConcurrency {
     @Autowired
     private LocalDiscService localDiscService;
 
+    @Autowired
+    private LocalSingerService localSingerService;
+
     @Async
     public void saveRecommendList(List<RecommendVo> recommendVoList) {
         localRecommendService.saveRecommendList(recommendVoList);
@@ -29,5 +34,10 @@ public class MusicConcurrency {
     @Async
     public void saveDiscList(List<DiscVo> discVoList) {
         localDiscService.saveDiscList(discVoList);
+    }
+
+    @Async
+    public void saveSingerList(List<SingerVo> singerVoList) {
+        localSingerService.saveSingerList(singerVoList);
     }
 }

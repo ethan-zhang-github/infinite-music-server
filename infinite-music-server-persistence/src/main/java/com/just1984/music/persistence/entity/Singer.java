@@ -18,6 +18,10 @@ public class Singer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long originId;
+
+    private String mid;
+
     private String name;
 
     private String otherName;

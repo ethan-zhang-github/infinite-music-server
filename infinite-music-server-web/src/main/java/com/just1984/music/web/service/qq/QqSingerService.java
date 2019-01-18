@@ -7,6 +7,7 @@ import com.just1984.music.core.util.JsonMapper;
 import com.just1984.music.model.vo.SingerVo;
 import com.just1984.music.model.vo.qq.QQResponseVo;
 import com.just1984.music.model.vo.qq.QQSingerListVo;
+import com.just1984.music.web.component.concurrency.MusicConcurrency;
 import com.just1984.music.web.component.converter.QQSingerItemVo2SingerVoConverter;
 import com.just1984.music.web.config.property.MusicProperties;
 import com.just1984.music.web.service.SingerService;
@@ -27,10 +28,13 @@ import java.util.List;
 public class QqSingerService implements SingerService {
 
     @Autowired
-    private RestTemplate restTemplate;
+    private MusicProperties musicProperties;
 
     @Autowired
-    private MusicProperties musicProperties;
+    private MusicConcurrency musicConcurrency;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -52,14 +56,17 @@ public class QqSingerService implements SingerService {
         Resource resource = new ClassPathResource("static/singer-list.json");
         QQResponseVo<QQSingerListVo> res = new QQResponseVo<>();
         try {
-            String bodyStr = CharStreams.toString(new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8));
-            log.info(bodyStr);
             res = objectMapper.readValue(resource.getFile(), new TypeReference<QQResponseVo<QQSingerListVo>>() {});
         } catch (IOException e) {
             log.error("json parse error", e);
         }
-        log.info(JsonMapper.obj2String(res));
         List<SingerVo> singerVoList = QQSingerItemVo2SingerVoConverter.INSTANCE.convert(res.getData().getList());
+        musicConcurrency.saveSingerList(singerVoList);
         return singerVoList;
+    }
+
+    @Override
+    public SingerVo getById(Long id) {
+        return null;
     }
 }

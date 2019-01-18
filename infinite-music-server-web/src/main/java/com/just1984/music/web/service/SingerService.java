@@ -7,4 +7,6 @@ import java.util.List;
 public interface SingerService {
 
     List<SingerVo> getSingerList(int size);
+
+    SingerVo getById(Long id);
 }
