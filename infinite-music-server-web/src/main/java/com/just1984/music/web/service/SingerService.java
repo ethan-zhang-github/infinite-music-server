@@ -8,5 +8,5 @@ public interface SingerService {
 
     List<SingerVo> getSingerList(int size);
 
-    SingerVo getById(Long id);
+    SingerVo getById(String id);
 }

@@ -47,7 +47,7 @@ public class LocalSingerService implements SingerService {
     }
 
     @Override
-    public SingerVo getById(Long id) {
+    public SingerVo getById(String id) {
         return null;
     }
 

@@ -29,7 +29,7 @@ public class SingerController {
     }
 
     @GetMapping("/detail/{id}")
-    public ResultVo<SingerVo> getById(@PathVariable Long id) {
+    public ResultVo<SingerVo> getById(@PathVariable String id) {
         SingerVo singerVo = musicServiceHolder.getSingerService(musicProperties.getProfile()).getById(id);
         return ResultVo.success(singerVo);
     }
