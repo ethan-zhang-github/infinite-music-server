@@ -3,6 +3,7 @@ package com.just1984.music.web.component.holder;
 import com.just1984.music.web.service.DiscService;
 import com.just1984.music.web.service.RecommendService;
 import com.just1984.music.web.service.SingerService;
+import com.just1984.music.web.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,9 @@ public class MusicServiceHolder {
     @Autowired
     private Map<String, SingerService> singerServiceMap;
 
+    @Autowired
+    private Map<String, TopicService> topicServiceMap;
+
     public RecommendService getRecommendService(String prefix) {
         return recommendServiceMap.get(prefix.toLowerCase() + "RecommendService");
     }
@@ -30,5 +34,9 @@ public class MusicServiceHolder {
 
     public SingerService getSingerService(String prefix) {
         return singerServiceMap.get(prefix.toLowerCase() + "SingerService");
+    }
+
+    public TopicService getTopicService(String prefix) {
+        return topicServiceMap.get(prefix.toLowerCase() + "TopicService");
     }
 }

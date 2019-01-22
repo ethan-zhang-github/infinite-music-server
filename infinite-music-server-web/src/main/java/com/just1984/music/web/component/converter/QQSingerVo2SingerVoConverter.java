@@ -18,8 +18,6 @@ public enum QQSingerVo2SingerVoConverter implements MusicConverter<QQSingerVo, S
 
     @Override
     public SingerVo convert(QQSingerVo qqSingerVo) {
-        SingerVo vo = new SingerVo();
-        vo.setName(qqSingerVo.getName());
-        return vo;
+        return SingerVo.builder().name(qqSingerVo.getName()).build();
     }
 }

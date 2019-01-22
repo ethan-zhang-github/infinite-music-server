@@ -16,4 +16,6 @@ public class QQProperties {
     private String singerAvatarFormatter;
 
     private String singerDetailUrl;
+
+    private String topListUrl;
 }

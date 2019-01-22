@@ -18,9 +18,13 @@ public class Topic implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long originId;
+
     private String name;
 
     private String resourceIds;
+
+    private String topSongInfos;
 
     @CreatedDate
     private Date createTime;
