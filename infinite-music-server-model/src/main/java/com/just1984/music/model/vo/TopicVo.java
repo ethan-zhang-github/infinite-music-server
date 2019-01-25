@@ -9,6 +9,8 @@ public class TopicVo {
 
     private Long id;
 
+    private Long originId;
+
     private String name;
 
     private String picUrl;
