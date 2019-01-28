@@ -9,5 +9,17 @@ public class SongVo {
 
     private String name;
 
+    private String mid;
+
+    private String albumName;
+
+    private String albumMid;
+
+    private Long duration;
+
+    private String url;
+
+    private String imgUrl;
+
     private SingerVo singer;
 }

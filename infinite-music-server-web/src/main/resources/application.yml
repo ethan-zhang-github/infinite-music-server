@@ -9,7 +9,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 
 music:
-  profile: local
+  profile: qq
   qq:
     recommend-list-url: https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg
     disc-list-url: https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg
@@ -17,3 +17,4 @@ music:
     singer-avatar-formatter: https://y.gtimg.cn/music/photo_new/T001R300x300M000%s.jpg?max_age=2592000
     singer-detail-url: https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg
     top-list-url: https://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg
+    top-music-list-url: https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg

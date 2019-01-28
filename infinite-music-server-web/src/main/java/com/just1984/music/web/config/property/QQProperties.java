@@ -18,4 +18,6 @@ public class QQProperties {
     private String singerDetailUrl;
 
     private String topListUrl;
+
+    private String topMusicListUrl;
 }

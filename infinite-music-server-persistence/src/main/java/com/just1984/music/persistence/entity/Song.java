@@ -32,6 +32,12 @@ public class Song implements Serializable {
 
     private String name;
 
+    private String mid;
+
+    private String albumName;
+
+    private String albumMid;
+
     private Long duration;
 
     private Long popularity;
