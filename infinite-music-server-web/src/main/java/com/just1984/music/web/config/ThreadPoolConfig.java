@@ -7,6 +7,11 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.ThreadPoolExecutor;
 
+/**
+ * @description: 线程池配置
+ * @author: yixiezi1994@gmail.com
+ * @date: 2019-03-22 18:17:06
+ */
 @SpringBootConfiguration
 public class ThreadPoolConfig {
 
@@ -20,7 +25,7 @@ public class ThreadPoolConfig {
         // 设置队列容量
         executor.setQueueCapacity(20);
         // 设置线程活跃时间（秒）
-        executor.setKeepAliveSeconds(60);
+        executor.setKeepAliveSeconds(300);
         // 设置默认线程名称
         executor.setThreadNamePrefix("music-");
         // 设置拒绝策略

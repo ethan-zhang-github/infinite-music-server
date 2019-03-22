@@ -7,15 +7,14 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
 /**
  * @description: @Async使用自定义线程池
- * @author: zhangyifan@wshifu.com
- * @date: 2019-03-22 17:52
+ * @author: yixiezi1994@gmail.com
+ * @date: 2019-03-22 18:17:17
  */
 @Slf4j
 @Component
