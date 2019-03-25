@@ -30,9 +30,9 @@ public class MusicAsyncConfigurer implements AsyncConfigurer {
 
     @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-        return ((throwable, method, objects) -> {
-            log.info("多线程执行异常，message:【{}】，method:【{}】，params:【{}】", throwable.getMessage(),
-                    method.getName(), Arrays.stream(objects).map(Object::toString).collect(Collectors.joining(", ")));
+        return ((throwable, method, params) -> {
+            log.error("多线程执行异常，message:【{}】，method:【{}】，params:【{}】", throwable.getMessage(),
+                    method.getName(), Arrays.stream(params).map(Object::toString).collect(Collectors.joining(", ")));
         });
     }
 }

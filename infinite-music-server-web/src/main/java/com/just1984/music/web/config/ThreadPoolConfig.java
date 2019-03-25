@@ -29,7 +29,7 @@ public class ThreadPoolConfig {
         // 设置默认线程名称
         executor.setThreadNamePrefix("music-");
         // 设置拒绝策略
-        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         return executor;
     }
 }
